@@ -1,13 +1,19 @@
 package com.idrilplays.idril.actividaduf3;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class SplashActivity extends AppCompatActivity implements Animation.AnimationListener{
 
@@ -28,6 +34,13 @@ public class SplashActivity extends AppCompatActivity implements Animation.Anima
         play = (TextView) findViewById(R.id.textoSplashPlay);
         playLogo = (ImageView) findViewById(R.id.playlogo);
         pauseLogo = (ImageView)findViewById(R.id.pauselogo);
+
+        // Creamos un objeto TypeFace, a este le indicamos que de los asset obtenga la fuente mediante el nombre dado
+        Typeface mifuente = Typeface.createFromAsset(getAssets(), "Clip.ttf");
+        // Asociamos las views con la fuente mediante el metodo setTypeface
+        link.setTypeface(mifuente);
+        and.setTypeface(mifuente);
+        play.setTypeface(mifuente);
 
         // Creamos las animaciones
         Animation animacionLink = AnimationUtils.loadAnimation(this, R.anim.animaciontextolink);

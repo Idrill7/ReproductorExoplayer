@@ -5,4 +5,8 @@
     <string name="textoTituloSplash3">PLAY</string>
     <string name="playLogoDesc">parte izquierda logo</string>
     <string name="pauseLogoDesc">parte derecha del logo</string>
+    <string name="titleMenuIconAddLink">AddLinkIcon</string>
+    <string name="dialogTitle">Inserte un link </string>
+    <string name="dialogNegativeText">Cancelar</string>
+    <string name="dialogPositiveText">Reproducir</string>
 </resources>
