@@ -11,7 +11,20 @@
     <!-- Estilo para que no se muestre una pantalla en blanco antes del splash -->
     <style name="BeforeSplash" parent="Theme.AppCompat.NoActionBar">
         <item name="android:windowBackground">@drawable/gradient</item>
-        <item name="colorPrimaryDark">#232526</item>
+        <item name="colorPrimaryDark">#28303b</item>
+    </style>
+
+    <!-- Estilo para el texto del splash -->
+    <style name="textSplash" >
+
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">40sp</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:shadowColor">@color/colorPrimaryDark</item>
+        <item name="android:shadowRadius">10</item>
+        <item name="android:shadowDx">10</item>
+
     </style>
 
 </resources>

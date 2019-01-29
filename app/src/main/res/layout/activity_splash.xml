@@ -24,6 +24,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="84dp"
         android:src="@drawable/playlogo"
+        android:contentDescription="@string/playLogoDesc"
         />
 
     <ImageView
@@ -34,17 +35,46 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="84dp"
         android:src="@drawable/pauselogo"
+        android:contentDescription="@string/pauseLogoDesc"
         />
 
     <TextView
+        style="@style/textSplash"
+        android:id="@+id/textoSplashLink"
+        android:layout_below="@+id/pauselogo"
+        android:layout_alignStart="@+id/playlogo"
+        android:layout_marginTop="-1dp"
+        android:text="@string/textoTituloSplash1"
+        android:textAlignment="center" />
+
+    <TextView
+        style="@style/textSplash"
+        android:id="@+id/textoSplashAnd"
+        android:layout_below="@+id/pauselogo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="21dp"
+        android:layout_toEndOf="@+id/textoSplashLink"
+        android:text="@string/textoTituloSplash2"
+        android:textAlignment="center" />
+
+    <TextView
+        style="@style/textSplash"
+        android:id="@+id/textoSplashPlay"
+        android:text="@string/textoTituloSplash3"
+        android:layout_below="@+id/pauselogo"
+        android:textAlignment="textEnd"
+        android:layout_toEndOf="@+id/textoSplashAnd"
+        android:layout_alignEnd="@+id/playlogo"
+        />
+
+    <!-- Gif de carga -->
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/gifCarga"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/textoSplashPlay"
         android:layout_centerHorizontal="true"
-        android:text="LINK &amp; PLAY"
-        android:layout_below="@+id/pauselogo"
-        android:textAlignment="center"
-        android:textSize="40sp"
-        />
+        android:layout_marginTop="34dp"
+        android:src="@drawable/countdownsplash" />
 
 </RelativeLayout>

@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">¡Reproduce tu vídeo!</string>
+    <string name="app_name">LINK &amp; PLAY</string>
+    <string name="textoTituloSplash1">LINK</string>
+    <string name="textoTituloSplash2"><![CDATA[&]]></string>
+    <string name="textoTituloSplash3">PLAY</string>
+    <string name="playLogoDesc">parte izquierda logo</string>
+    <string name="pauseLogoDesc">parte derecha del logo</string>
 </resources>
