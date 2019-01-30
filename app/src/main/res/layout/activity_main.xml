@@ -10,7 +10,8 @@
     <com.google.android.exoplayer2.ui.PlayerView
         android:id="@+id/playerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:controller_layout_id="@layout/reproductor">
 
 
     </com.google.android.exoplayer2.ui.PlayerView>

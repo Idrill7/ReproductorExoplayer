@@ -1,6 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_gravity="bottom"
+    android:layoutDirection="ltr"
+    android:background="@color/colorAccent"
+    android:orientation="vertical"
+    tools:targetApi="28"
+    tools:context=".MainActivity">
 
-</android.support.constraint.ConstraintLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingTop="4dp"
+        android:orientation="horizontal">
+
+
+        <ImageButton
+            android:id="@+id/exo_restar"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@android:color/transparent"
+            android:scaleType="fitXY"
+            android:src="@drawable/logoapp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:onClick="restart"/>
+
+        <ImageButton android:id="@id/exo_rew"
+            android:tint="@color/colorPrimaryDark"
+            style="@style/ExoMediaButton.Rewind" />
+
+        <ImageButton android:id="@id/exo_play"
+            android:tint="@color/colorPrimary"
+            style="@style/ExoMediaButton.Play"/>
+
+        <ImageButton android:id="@id/exo_pause"
+            android:tint="@color/colorPrimary"
+            style="@style/ExoMediaButton.Pause"/>
+
+        <ImageButton android:id="@id/exo_ffwd"
+            android:tint="@color/colorPrimaryDark"
+            style="@style/ExoMediaButton.FastForward"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView android:id="@id/exo_position"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp"
+            android:includeFontPadding="false"
+            android:textColor="@color/colorPrimaryDark"
+            android:shadowColor="@color/colorPrimary"
+            android:shadowRadius="20"
+            android:shadowDx="1"/>
+
+        <com.google.android.exoplayer2.ui.DefaultTimeBar
+            android:id="@id/exo_progress"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="26dp"
+            app:buffered_color="@color/colorPrimary"
+            app:scrubber_color="@color/colorPrimaryDark" />
+
+        <TextView android:id="@id/exo_duration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp"
+            android:includeFontPadding="false"
+            android:textColor="@color/colorPrimaryDark"
+            android:shadowColor="@color/colorPrimary"
+            android:shadowRadius="20"
+            android:shadowDx="1"/>
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -10,10 +10,13 @@ import android.os.Bundle;
 import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.EditText;
+import android.widget.ImageButton;
 
 import com.google.android.exoplayer2.ExoPlayerFactory;
-import com.google.android.exoplayer2.Player;
 import com.google.android.exoplayer2.SimpleExoPlayer;
 import com.google.android.exoplayer2.source.ExtractorMediaSource;
 import com.google.android.exoplayer2.trackselection.DefaultTrackSelector;
@@ -29,6 +32,11 @@ public class MainActivity extends AppCompatActivity {
     private PlayerView playerView;
     // Referencia a una instancia del ExoPlayer que va a ser el reproductor
     private SimpleExoPlayer reproductor;
+    private ImageButton exo_rew;
+    private ImageButton exo_play;
+    private ImageButton exo_pause;
+    private ImageButton exo_ffw;
+    private ImageButton restart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +44,23 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //Obtenemos la view segun su identificador
-        playerView = findViewById(R.id.playerView);
+        playerView = (PlayerView) findViewById(R.id.playerView);
+        exo_ffw = (ImageButton) findViewById(R.id.exo_ffwd);
+        exo_pause = (ImageButton) findViewById(R.id.exo_pause);
+        exo_play = (ImageButton) findViewById(R.id.exo_play);
+        exo_rew = (ImageButton) findViewById(R.id.exo_rew);
+        restart = findViewById(R.id.exo_restar);
+
+        // Creamos las animaciones
+        Animation animacionbotones = AnimationUtils.loadAnimation(this, R.anim.animacionbotonexo);
+
+        // Ligamos las animaciones
+        exo_ffw.startAnimation(animacionbotones);
+        exo_pause.startAnimation(animacionbotones);
+        exo_play.startAnimation(animacionbotones);
+        exo_rew.startAnimation(animacionbotones);
+        restart.startAnimation(animacionbotones);
+
     }
 
     @Override
@@ -117,4 +141,14 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Metodo que reinicia el video a 0
+     * @param view
+     */
+    public void restart(View view) {
+
+        reproductor.seekTo(0);
+        reproductor.setPlayWhenReady(true);
+
+    }
 }
