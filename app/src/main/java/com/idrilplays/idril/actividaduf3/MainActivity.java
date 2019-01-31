@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Obtenemos la view segun su identificador 
+        // Obtenemos la view segun su identificador
         exo_ffw = (ImageButton) findViewById(R.id.exo_ffwd);
         exo_pause = (ImageButton) findViewById(R.id.exo_pause);
         exo_play = (ImageButton) findViewById(R.id.exo_play);
@@ -54,9 +54,6 @@ public class MainActivity extends AppCompatActivity {
 
         // Creamos la animacion
         animacionbotones = AnimationUtils.loadAnimation(this, R.anim.animacionbotonexo);
-
-
-
 
     }
 
