@@ -34,19 +34,23 @@
 
         <ImageButton android:id="@id/exo_rew"
             android:tint="@color/colorPrimaryDark"
-            style="@style/ExoMediaButton.Rewind" />
+            style="@style/ExoMediaButton.Rewind"
+            android:onClick="animarBoton"/>
 
         <ImageButton android:id="@id/exo_play"
             android:tint="@color/colorPrimary"
-            style="@style/ExoMediaButton.Play"/>
+            style="@style/ExoMediaButton.Play"
+            android:onClick="animarBoton"/>
 
         <ImageButton android:id="@id/exo_pause"
             android:tint="@color/colorPrimary"
-            style="@style/ExoMediaButton.Pause"/>
+            style="@style/ExoMediaButton.Pause"
+            android:onClick="animarBoton"/>
 
         <ImageButton android:id="@id/exo_ffwd"
             android:tint="@color/colorPrimaryDark"
-            style="@style/ExoMediaButton.FastForward"/>
+            style="@style/ExoMediaButton.FastForward"
+            android:onClick="animarBoton"/>
 
     </LinearLayout>
 

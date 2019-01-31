@@ -37,29 +37,26 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton exo_pause;
     private ImageButton exo_ffw;
     private ImageButton restart;
+    private Animation animacionbotones;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Obtenemos la view segun su identificador
-        playerView = (PlayerView) findViewById(R.id.playerView);
+        // Obtenemos la view segun su identificador 
         exo_ffw = (ImageButton) findViewById(R.id.exo_ffwd);
         exo_pause = (ImageButton) findViewById(R.id.exo_pause);
         exo_play = (ImageButton) findViewById(R.id.exo_play);
         exo_rew = (ImageButton) findViewById(R.id.exo_rew);
+        playerView = (PlayerView) findViewById(R.id.playerView);
         restart = findViewById(R.id.exo_restar);
 
-        // Creamos las animaciones
-        Animation animacionbotones = AnimationUtils.loadAnimation(this, R.anim.animacionbotonexo);
+        // Creamos la animacion
+        animacionbotones = AnimationUtils.loadAnimation(this, R.anim.animacionbotonexo);
 
-        // Ligamos las animaciones
-        exo_ffw.startAnimation(animacionbotones);
-        exo_pause.startAnimation(animacionbotones);
-        exo_play.startAnimation(animacionbotones);
-        exo_rew.startAnimation(animacionbotones);
-        restart.startAnimation(animacionbotones);
+
+
 
     }
 
@@ -142,13 +139,26 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Metodo que reinicia el video a 0
-     * @param view
+     * Metodo que sera aniadido como onclick en el xml a la view y reinicia el video a 0
+     * Tambien inicia la animacion
+     * @param view la view que hace genera el onclick
      */
     public void restart(View view) {
 
+
+        view.startAnimation(animacionbotones);
         reproductor.seekTo(0);
         reproductor.setPlayWhenReady(true);
+
+    }
+
+    /**
+     * Metodo que anima el boton que sera aniadido como onclick en el xml a la view
+     * @param view la view que hace genera el onclick
+     */
+    public void animarBoton(View view) {
+
+            view.startAnimation(animacionbotones);
 
     }
 }
