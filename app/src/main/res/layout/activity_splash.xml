@@ -16,6 +16,7 @@
         android:background="@drawable/gradient"
        />
 
+    <!-- parte izquierda logo -->
     <ImageView
         android:id="@+id/playlogo"
         android:layout_width="250dp"
@@ -26,7 +27,7 @@
         android:src="@drawable/playlogo"
         android:contentDescription="@string/playLogoDesc"
         />
-
+    <!-- parte derecha logo -->
     <ImageView
         android:id="@+id/pauselogo"
         android:layout_width="250dp"
@@ -38,6 +39,7 @@
         android:contentDescription="@string/pauseLogoDesc"
         />
 
+    <!-- texto LINK-->
     <TextView
         style="@style/textSplash"
         android:id="@+id/textoSplashLink"
@@ -47,6 +49,7 @@
         android:text="@string/textoTituloSplash1"
         android:textAlignment="center" />
 
+    <!-- texto AND-->
     <TextView
         style="@style/textSplash"
         android:id="@+id/textoSplashAnd"
@@ -57,6 +60,7 @@
         android:text="@string/textoTituloSplash2"
         android:textAlignment="center" />
 
+    <!-- texto PLAY-->
     <TextView
         style="@style/textSplash"
         android:id="@+id/textoSplashPlay"

@@ -20,6 +20,15 @@
         android:paddingTop="4dp"
         android:orientation="horizontal">
 
+        <ImageButton
+            android:id="@+id/exo_volumen"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@android:color/transparent"
+            android:scaleType="fitXY"
+            android:src="@mipmap/volume_up"
+            android:layout_marginRight="20dp"
+            android:onClick="setVolumen"/>
 
         <ImageButton
             android:id="@+id/exo_restar"
@@ -28,7 +37,8 @@
             android:background="@android:color/transparent"
             android:scaleType="fitXY"
             android:src="@drawable/logoapp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="2dp"
+
             android:layout_marginRight="5dp"
             android:onClick="restart"/>
 
@@ -78,7 +88,7 @@
             android:id="@id/exo_progress"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="26dp"
+            android:layout_height="20dp"
             app:buffered_color="@color/colorPrimary"
             app:scrubber_color="@color/colorPrimaryDark" />
 
@@ -94,6 +104,7 @@
             android:shadowColor="@color/colorPrimary"
             android:shadowRadius="20"
             android:shadowDx="1"/>
+
 
     </LinearLayout>
 

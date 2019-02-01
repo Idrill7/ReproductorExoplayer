@@ -1,6 +1,7 @@
 package com.idrilplays.idril.actividaduf3;
 
 import android.content.DialogInterface;
+import android.content.pm.ActivityInfo;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.support.v4.content.ContextCompat;
@@ -15,6 +16,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import com.google.android.exoplayer2.ExoPlayerFactory;
 import com.google.android.exoplayer2.SimpleExoPlayer;
@@ -38,6 +40,12 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton exo_ffw;
     private ImageButton restart;
     private Animation animacionbotones;
+    private ImageButton volumen;
+    private Animation animacionrewind;
+    private ImageView playLogo;
+    private ImageView pauseLogo;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,10 +59,13 @@ public class MainActivity extends AppCompatActivity {
         exo_rew = (ImageButton) findViewById(R.id.exo_rew);
         playerView = (PlayerView) findViewById(R.id.playerView);
         restart = findViewById(R.id.exo_restar);
+        volumen = findViewById(R.id.exo_volumen);
+        playLogo = findViewById(R.id.playlogo2);
+        pauseLogo = findViewById(R.id.pauselogo2);
 
         // Creamos la animacion
         animacionbotones = AnimationUtils.loadAnimation(this, R.anim.animacionbotonexo);
-
+        animacionrewind = AnimationUtils.loadAnimation(this, R.anim.animacionrewind);
     }
 
     @Override
@@ -91,6 +102,11 @@ public class MainActivity extends AppCompatActivity {
                         // Almacenamos la cadena de texto en una variable, que sera el contenido del EditText
                         String url= cajaTexto.getText().toString();
 
+
+
+                        playLogo.setVisibility(View.INVISIBLE);
+                        pauseLogo.setVisibility(View.INVISIBLE);
+
                         // Aniadimos el reproductor a la view
                         playerView.setPlayer(reproductor);
 
@@ -120,20 +136,22 @@ public class MainActivity extends AppCompatActivity {
 
        /**
      * Cuando el activity ya no sea visible, paramos el exoplayer
-     */
 
+        */
     @Override
     protected void onStop() {
         super.onStop();
 
         if (reproductor != null) {
             // La view le ponemos el reproductor a nulo
+
             playerView.setPlayer(null);
             // Al propio reproductor lo dejamos en release y la variable a nulo
             reproductor.release();
             reproductor = null;
         }
     }
+
 
     /**
      * Metodo que sera aniadido como onclick en el xml a la view y reinicia el video a 0
@@ -143,11 +161,12 @@ public class MainActivity extends AppCompatActivity {
     public void restart(View view) {
 
 
-        view.startAnimation(animacionbotones);
+        view.startAnimation(animacionrewind);
         reproductor.seekTo(0);
         reproductor.setPlayWhenReady(true);
 
     }
+
 
     /**
      * Metodo que anima el boton que sera aniadido como onclick en el xml a la view
@@ -156,6 +175,25 @@ public class MainActivity extends AppCompatActivity {
     public void animarBoton(View view) {
 
             view.startAnimation(animacionbotones);
+
+    }
+
+    /**
+     * metodo publico que no devuelve nada y se utilizara en un onclick para
+     * establecer en 0 o 1 el volumen
+     * @param view, la view que llama a este metodo
+     */
+    public void setVolumen(View view) {
+
+        if (reproductor.getVolume() == 1) {
+            reproductor.setVolume(0);
+            view.startAnimation(animacionbotones);
+            volumen.setImageResource(R.mipmap.volume_mute);
+        } else {
+            reproductor.setVolume(1);
+            view.startAnimation(animacionbotones);
+            volumen.setImageResource(R.mipmap.volume_up);
+        }
 
     }
 }
