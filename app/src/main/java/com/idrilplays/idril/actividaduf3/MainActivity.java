@@ -17,6 +17,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.google.android.exoplayer2.ExoPlayerFactory;
 import com.google.android.exoplayer2.SimpleExoPlayer;
@@ -44,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
     private Animation animacionrewind;
     private ImageView playLogo;
     private ImageView pauseLogo;
+    private String url;
+    private DefaultDataSourceFactory dataSourceFactory;
 
 
 
@@ -66,6 +69,9 @@ public class MainActivity extends AppCompatActivity {
         // Creamos la animacion
         animacionbotones = AnimationUtils.loadAnimation(this, R.anim.animacionbotonexo);
         animacionrewind = AnimationUtils.loadAnimation(this, R.anim.animacionrewind);
+
+
+
     }
 
     @Override
@@ -78,17 +84,15 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        // sonido al escoger la opcion
+        // sonido al hacer click en el menuitem
         mp = MediaPlayer.create(this, R.raw.addlink);
         mp.start();
 
         //Creamos el objeto de EditText que sera la caja de texto que va a ser contenida dentro del AlertDialog, el contexto sera este, this (MainActivity) , por ello lo creamos antes.
         final EditText cajaTexto = new EditText(this);
 
-        //Creamos el reproductor
-        reproductor = ExoPlayerFactory.newSimpleInstance(this, new DefaultTrackSelector());
         // Preparamos el reproductor con la url a reproducir, creamos la instrancia donde cargaremos los datos
-        final DefaultDataSourceFactory dataSourceFactory = new DefaultDataSourceFactory(this, Util.getUserAgent(this, "ExoPlayer"));
+        dataSourceFactory = new DefaultDataSourceFactory(this, Util.getUserAgent(this, "ExoPlayer"));
 
 
 
@@ -100,22 +104,23 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         // Almacenamos la cadena de texto en una variable, que sera el contenido del EditText
-                        String url= cajaTexto.getText().toString();
-
-
-
+                        url= cajaTexto.getText().toString();
+                        // Ocultamos el logo
                         playLogo.setVisibility(View.INVISIBLE);
                         pauseLogo.setVisibility(View.INVISIBLE);
 
-                        // Aniadimos el reproductor a la view
-                        playerView.setPlayer(reproductor);
 
                         // Aniadimos el origen del medio que sera la url
                         ExtractorMediaSource archivo = new ExtractorMediaSource.Factory(dataSourceFactory).createMediaSource(Uri.parse(url));
 
+                        // Hacemos un stop para parar el video anterior si se introducen dos enlaces
+                        reproductor.stop();
                         //Preparamos el reproductor con el archivo a reproducir, la url
                         reproductor.prepare(archivo);
+                        // Iniciamos el video
                         reproductor.setPlayWhenReady(true);
+
+
 
                     }
                 })
@@ -132,9 +137,23 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * en el onstart creamos la instancia del reproductor para que siempre sea la misma
+     *  y al view le establecemos esa instancia
+     */
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        // Creamos el reproductor
+        reproductor = ExoPlayerFactory.newSimpleInstance(this, new DefaultTrackSelector());
+        // Aniadimos el reproductor a la view
+        playerView.setPlayer(reproductor);
 
 
-       /**
+    }
+
+    /**
      * Cuando el activity ya no sea visible, paramos el exoplayer
 
         */
@@ -150,6 +169,10 @@ public class MainActivity extends AppCompatActivity {
             reproductor.release();
             reproductor = null;
         }
+
+
+         //Toast.makeText(this, "hola", Toast.LENGTH_LONG)
+            //      .show();
     }
 
 
@@ -162,8 +185,9 @@ public class MainActivity extends AppCompatActivity {
 
 
         view.startAnimation(animacionrewind);
+        // ponemos el segundo 0
         reproductor.seekTo(0);
-        reproductor.setPlayWhenReady(true);
+
 
     }
 
